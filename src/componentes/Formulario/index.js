@@ -11,19 +11,13 @@ const Formulario = (props) => {
     const [imagem, setImagem] = useState('')
     const [time, setTime] = useState('');
 
-    const times = [
-        'Programação',
-        'Front-End',
-        'Data Science',
-        'Devops',
-        'UX e Design',
-        'Mobile',
-        'Inovação e Gestão'
-    ]
-
     const salvar = (evento) => {
         evento.preventDefault()
         props.salvar({ nome, cargo, imagem, time })
+        setNome('')
+        setCargo('')
+        setImagem('')
+        setTime('')
     }
 
     return (
@@ -54,7 +48,7 @@ const Formulario = (props) => {
                     valor={time}
                     alterarCampo={valor => setTime(valor)}
                     label="Time"
-                    itens={times}
+                    itens={props.times}
                     obrigatorio={true}
                 />
                 <Botao>
